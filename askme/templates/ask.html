@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link href="{% static '/css/ask.css' %}" rel="stylesheet">
+  <h1 class = "headTitle">Adding new Question ...</h1>
+    <div>
+      <t style="color: red;">{{err}}</t> <!--some error will be occured (for example if Title is empty)-->
+      <input class="form-control form-control-lg infoInput" type="text" placeholder="Title">
+      <div class="form-group">
+
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Enter question text"></textarea>
+    </div>
+      <input class="form-control form-control-lg infoInput" type="text" placeholder="Tags">
+    </div>
+    <button class="btn btn-success" type="submit">Ask!</button>
+
+{% endblock %}
+
+

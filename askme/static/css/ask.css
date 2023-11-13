@@ -1,0 +1,51 @@
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+main > .container {
+  padding: 90px 15px 0;
+}
+
+.infoInput{
+    margin-top: 50px;
+    margin-bottom:30px;
+}
+
+.user{
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-right: 20px;
+    margin-left: 30px;
+    color: white;
+    font-weight: 100;
+}
+.userName > a{
+    color: grey;
+    text-decoration: underline;
+    display: inline;
+    padding: 5px;
+}
+.tag{
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.members{
+    text-align: center;
+    margin: 50px;
+    padding-bottom: 40px;
+    font-size: 19px;
+
+}
+.members ul a {
+    padding: 10px;
+    text-decoration: underline;
+    color: blue;
+
+}
+
+.col-4 > h1{
+    text-align: center;
+}

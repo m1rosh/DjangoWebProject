@@ -1,0 +1,135 @@
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+main > .container {
+  padding: 90px 15px 0;
+}
+
+.signing{
+    margin-top: 30px;
+}
+
+.signIn{
+    max-width: 300px;
+    padding-bottom: 20px;
+
+}
+.avatarDiv{
+    display: inline;
+}
+.questionsBlock{
+    margin-top: 50px;
+}
+
+.loginBlock > t{
+    margin-top: 200px;
+
+}
+
+.question-image{
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 200px;
+    max-height: 200px;
+
+}
+.question{
+    background-color: rgba(210, 210, 210, 0.4);
+    border: 2px solid grey;
+    box-shadow: 8px 8px 5px grey;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+.question-title{
+    font-size: 23px;
+    font-weight: bold;
+    font-family: serif;
+}
+.likeBtn:hover::before{
+    color: white;
+    content:'+ 1 like - ';
+}
+.question-text{
+    font-size: 20px;
+    font-family: serif;
+}
+.user{
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-right: 20px;
+    margin-left: 30px;
+    color: white;
+    font-weight: 100;
+}
+.like-image{
+    margin-left: 0px;
+    max-width: 50px;
+    max-height: 50px;
+}
+.counters{
+    margin-top: 30px;
+}
+.answerTag{
+  padding-left: 10px;
+  color: black;
+  padding-top: 200px;
+}
+.counters > a{
+    padding-left: 30px;
+    padding-right: 25px;
+    color: blue;
+
+}
+.avatar-image{
+    max-width: 50px;
+    max-height: 50px;
+
+}
+
+.headTitle{
+    padding-right: 200px;
+    display: inline;
+}
+.Login{
+    width: 35%
+}
+.userName > a{
+    color: grey;
+    text-decoration: underline;
+    display: inline;
+    padding: 5px;
+}
+.tag{
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.col-4 > h1{
+    text-align: center;
+}
+.members{
+    text-align: center;
+    margin: 50px;
+    padding-bottom: 40px;
+    font-size: 19px;
+
+}
+.members ul a {
+    padding: 10px;
+    text-decoration: underline;
+    color: blue;
+
+}
+
+#loginBtn{
+    margin-top: 30px;
+    color: black;
+}
+
+#loginBtn > a{
+    padding-left: 10px;
+}

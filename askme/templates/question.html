@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link href="{% static '/css/question.css' %}" rel="stylesheet">
+        <a style="color: red">{{err}}</a> <!-- some error will be occured if needed -->
+        <div class="row mainQuestion">
+          <div class="col-3">
+            <img src="{% static '/images/avatar3.png' %}" class="question-image">
+
+          </div>
+          <div class="col-9">
+          <div class="question-title">
+            <a href="#">{{question.title}}</a>
+          </div>
+            <div class="question-text">
+                {{question.content}}
+            </div>
+
+            <div class="counters">
+                <button type="button" class="btn btn-danger likeBtn">
+              Likes {{question.question_likes}}<span class="badge badge-warning"></span>
+              </button>
+                <button type="button" class="likeBtn btn btn-secondary">
+              Disikes {{question.question_dislikes}}
+              </button>
+              <div style = "margin-top: 20px;" class="tags">
+                Tags:
+                {% for tag in question.tag.all %}
+                <a class = "answerTag" href="{% url 'tag' tag_name=tag %}">{{tag}}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% for answer in answers %}
+        <div class="row question">
+          <div class="col-2">
+            <img src="{% static '/images/avatar2.png' %}" class="answer-image">
+              <br>
+
+              <button style="width: 100%; margin-bottom: 10px;" type="button" class="btn btn-outline-danger likeBtn">
+              Likes {{answer.answer_likes}}<span class="badge badge-warning"></span>
+              <button style="width: 100%; margin-bottom: 10px;" type="button" class="btn btn-secondary likeBtn">
+              Dislikes {{answer.answer_dislikes}}<span class="badge badge-warning"></span>
+              </button>
+
+
+          </div>
+          <div class="col-10">
+              <div class="question-text">{{ answer.content }}</div>
+
+                <div class="form-check">
+                    {% if answer.is_correct == 0 %}
+                  <input class="form-check-input" type="checkbox" value="" id="{{answer.id}}">
+                    {% else %}
+                    <input class="form-check-input" type="checkbox" value="" id="{{answer.id}}" checked>
+                    {% endif %}
+
+                  <label style="text-decoration: underline;" for="{{answer.id}}">
+                    Correct
+                  </label>
+                </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% include 'components/paginator.html' %}
+
+        <div class="form-group">
+        <label for="exampleFormControlTextarea1">Enter your answer below</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+        </div>
+        <button type="button" class="btn btn-success" id="sendAnswerBtn">Answer!</button>
+
+{% endblock %}
+

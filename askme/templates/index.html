@@ -1,0 +1,52 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+{% load static %}
+
+    <link href="{% static '/css/main.css' %}" rel="stylesheet">
+      {% if req == 'hot' %}
+        <h1 class = "headTitle">Hot Questions</h1>
+      {% elif req == '' %}
+            <h1 class = "headTitle">New Questions</h1>
+          <a style="font-size: 25px;" class = "headTitle" href = "{% url 'hot' %}">Hot Questions</a>
+      {% else %}
+        <h1 class = "headTitle">Tag: {{req}}</h1>
+      {% endif %}
+        {% for question in questions %}
+            <div class="row question">
+          <div class="col-3">
+            <img src="{% static '/images/avatar3.png' %}" class="question-image">
+          </div>
+          <div class="col-9">
+          <div class="question-title">
+            <a href="{% url 'question' question_id=question.id %}">{{question.title}}</a>
+          </div>
+            <div class="question-text">
+                {{question.content}}
+            </div>
+
+            <div class="counters">
+                <button type="button" class="likeBtn btn btn-danger">
+              Likes {{question.question_likes}}
+              </button>
+              <button type="button" class="likeBtn btn btn-secondary">
+              Disikes {{question.question_dislikes}}
+              </button>
+              <a href="{% url 'question' question_id=question.id %}">Answers - {{question.count|length}}</a>
+              <br>
+              <div style = "margin-top: 20px;margin-bottom:20px;"class="tags">
+                Tags:
+                {% for tag in question.tag.all %}
+                <a class = "answerTag" href="{% url 'tag' tag_name=tag %}">{{tag}}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endfor %}
+
+{% include 'components/paginator.html' %}
+
+{% endblock %}
