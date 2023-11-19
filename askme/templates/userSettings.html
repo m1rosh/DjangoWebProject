@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
-
+{% load static %}
 {% block content %}
-<link href="static/css/userSettings.css" rel="stylesheet">
+<link href="{% static '/css/userSettings.css' %}" rel="stylesheet">
 
 
     <h1 class = "headTitle">Settings: S.Miroshnichenko</h1>
@@ -18,7 +18,7 @@
     <input class="form-control" id="nickInput" value="S.Miroshnichenko" placeholder="nickname">
     <label for="nickInput">Nickname</label>
   </div>
-    <img src="static/images/avatar1.png" class="question-image">
+    <img src="{% static '/images/avatar1.png' %}" class="question-image">
     <div class="avatarDiv">
       <div class="form-floating signIn">
     <input class="form-control" id="avatarInput" value="C:\avatar.png" placeholder="avatar">
