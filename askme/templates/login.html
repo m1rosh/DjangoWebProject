@@ -1,29 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load django_bootstrap5 %}
 <link href="{% static '/css/login.css' %}" rel="stylesheet">
 
       <h1 class = "headTitle">Log in</h1>
-    <a style="color: red">{{err}}</a> <!-- some error will be occured if needed -->
-    <div class="signing">
-    <div class="form-floating signIn">
-      <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
-      <label for="emailInput">Login</label>
-    </div>
-    <div class="form-floating signIn">
-      <input type="email" class="form-control" id="passInput" placeholder="name@example.com">
-      <label for="passInput">Password</label>
-    </div>
-      </div>
-
-
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
     <div id="loginBtn">
       <style>text-align: center</style>
-      <button type="button" class="btn btn-primary Login">Log in</button>
+      <button type="submit" class="btn btn-primary Login">Log in</button>
       <a>or</a>
       <a href="{% url 'signup' %}">create new account</a>
-
     </div>
+    </form>
 
 {% endblock %}
 

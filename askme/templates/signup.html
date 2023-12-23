@@ -1,43 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load django_bootstrap5 %}
 <link href="{% static '/css/signup.css' %}" rel="stylesheet">
 
       <h1 class = "headTitle">Register</h1>
-    <a style="color: red">{{err}}</a> <!-- some error will be occured if needed -->
-    <div class="signing">
-    <div class="form-floating signIn">
-      <input class="form-control" id="loginInput" placeholder="login">
-      <label for="loginInput">Login</label>
-    </div>
-    <div class="form-floating signIn">
-      <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
-      <label for="emailInput">Email address</label>
-    </div>
-      <div class="form-floating signIn">
-      <input class="form-control" id="nickInput" placeholder="nickname">
-      <label for="nickInput">Nickname</label>
-    </div>
-      <div class="form-floating signIn">
-      <input class="form-control" id="passInput" placeholder="Password">
-      <label for="passInput">Password</label>
-    </div>
-      <div class="form-floating signIn">
-      <input class="form-control" id="passRepeatInput" placeholder="Password">
-      <label for="passRepeatInput">Repeat password</label>
-    </div>
-      <div class="avatarDiv">
-        <div class="form-floating signIn">
-      <input type="file" class="form-control" id="avatarInput" placeholder="avatar">
-      <label for="avatarInput">Type avatar path</label>
-
-    </div>
-      </div>
-      </div>
-
+<form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
     <div id="loginBtn">
-      <button type="button" class="btn btn-primary Login">Register</button>
-
+      <button type="submit" class="btn btn-primary Login">Register</button>
     </div>
+    </form>
 
 {% endblock %}

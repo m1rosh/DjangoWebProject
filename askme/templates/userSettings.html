@@ -1,37 +1,26 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load django_bootstrap5 %}
 <link href="{% static '/css/userSettings.css' %}" rel="stylesheet">
 
-
-    <h1 class = "headTitle">Settings: S.Miroshnichenko</h1>
-  <div class="signing">
-  <div class="form-floating signIn">
-    <input class="form-control" id="loginInput" value="m1rosh" placeholder="login">
-    <label for="loginInput">Login</label>
-  </div>
-  <div class="form-floating signIn">
-    <input type="email" class="form-control" id="emailInput" value="mirosh430@gmail.com" placeholder="name@example.com">
-    <label for="emailInput">Email address</label>
-  </div>
-    <div class="form-floating signIn">
-    <input class="form-control" id="nickInput" value="S.Miroshnichenko" placeholder="nickname">
-    <label for="nickInput">Nickname</label>
-  </div>
-    <img src="{% static '/images/avatar1.png' %}" class="question-image">
-    <div class="avatarDiv">
-      <div class="form-floating signIn">
-    <input class="form-control" id="avatarInput" value="C:\avatar.png" placeholder="avatar">
-    <label for="avatarInput">Avatar path</label>
-      <button type="button" class="btn btn-dark chooseAvatar">...</button>
-  </div>
-    </div>
-    </div>
-
+    <h1 class = "headTitle">Settings: {{ setting_form.username.value }}</h1><br>
+{% if setting_form.username.value != user.username %}
+<a style="color: red; font-weight:500;">Username '{{ user.username }}' already exists. Choose another one</a><br>
+{% endif %}
+  <form method="post">
+    {% csrf_token %}
+    {{ setting_form }}
   <div id="loginBtn">
-    <button type="button" class="btn btn-success Login">Save</button>
-
+    <button type="submit" class="btn btn-success Login">Save</button>
   </div>
+    </form>
+{% if messages %}
+{% for message in messages %}
+<p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+
 
 {% endblock %}
 

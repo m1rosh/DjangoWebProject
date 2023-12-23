@@ -128,10 +128,15 @@ main > .container {
 }
 
 #loginBtn{
-    margin-top: 0px;
+    margin-top: 20px;
     color: black;
 }
 
 #loginBtn > a{
     padding-left: 10px;
+}
+
+p{
+margin-top: 50px;
+color: green;
 }

@@ -19,6 +19,14 @@ main > .container {
     color: white;
     font-weight: 100;
 }
+.avatar-image{
+    max-width: 50px;
+    max-height: 50px;
+}
+#askBtn{
+margin-top: 20px;
+width: 30%;
+}
 .userName > a{
     color: grey;
     text-decoration: underline;

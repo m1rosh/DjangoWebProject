@@ -44,14 +44,27 @@
           <input style="width: 80%" class="form-control me-2" type="search" placeholder="Type question..." aria-label="Search">
           <button style="width: 20%" class="btn btn-primary" type="button">Search</button>
         </form>
-
-        <div class="row user">
-          <div class="userName">
-            <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Register</a>
-            <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Log in</a>
+        {% if user.is_authenticated %}
+          <div class="row user">
+        <div class="col-3">
+          <img src="{% static '/images/avatar1.png' %}" class="avatar-image"/>
+        </div>
+          <div class="col-9 userName">
+            <t>{{ user.username }}<br></t>
+            <a style="padding-left: 0px;" class="nav-link active" aria-current="page" href="{% url 'settings' %}">Settings</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'logout' %}?next={{ request.path }}">Log out</a>
           </div>
 
       </div>
+          {% else %}
+        <div class="row user">
+          <div class="userName">
+            <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Register</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'login' %}?continue={{ request.path }}">Log in</a>
+          </div>
+
+      </div>
+          {% endif %}
 
       </div>
     </div>

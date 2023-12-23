@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load django_bootstrap5 %}
+
     <link href="{% static '/css/question.css' %}" rel="stylesheet">
-        <a style="color: red">{{err}}</a> <!-- some error will be occured if needed -->
         <div class="row mainQuestion">
           <div class="col-3">
             <img src="{% static '/images/avatar3.png' %}" class="question-image">
@@ -32,6 +33,20 @@
             </div>
           </div>
         </div>
+
+        <label>Enter your answer below</label>
+        {% if user.is_authenticated %}
+        <form method="post" id="answerForm">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-success" id="sendAnswerBtn">Answer!</button><br>
+
+        </form>
+        {% else %}
+        <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+        <a style="font-size: 20px;" href="{% url 'login' %}?continue={{ request.path }}">Login</a>
+        <a>to add answer</a>
+        {% endif %}
 
         {% for answer in answers %}
         <div class="row question">
@@ -64,14 +79,12 @@
           </div>
         </div>
         {% endfor %}
-
+        {% if messages %}
+            {% for message in messages %}
+            <t class="message"> {{ message }}</t>
+            {% endfor %}
+            {% endif %}
         {% include 'components/paginator.html' %}
-
-        <div class="form-group">
-        <label for="exampleFormControlTextarea1">Enter your answer below</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
-        </div>
-        <button type="button" class="btn btn-success" id="sendAnswerBtn">Answer!</button>
-
 {% endblock %}
+
 

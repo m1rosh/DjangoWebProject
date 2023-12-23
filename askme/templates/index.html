@@ -1,6 +1,7 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
+
 
 {% load static %}
 
@@ -13,6 +14,7 @@
       {% else %}
         <h1 class = "headTitle">Tag: {{req}}</h1>
       {% endif %}
+
         {% for question in questions %}
             <div class="row question">
           <div class="col-3">
